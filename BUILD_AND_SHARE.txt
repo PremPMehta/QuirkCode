@@ -1,0 +1,31 @@
+================================================================================
+  FOR THE PERSON BUILDING / PACKAGING THE ZIP (on Windows)
+================================================================================
+
+There is no ready-made .exe on a Mac. Build once on Windows, then share.
+
+1. Copy this whole project to a Windows PC.
+2. Install Python 3.11+ (check "Add to PATH").
+3. Double-click build.bat
+4. When it finishes, open:
+
+      dist\QuirkCode_Share\
+
+5. That folder is what you zip and send. It should contain:
+
+      QuirkCode.exe
+      config.json
+      HOW_TO_USE.txt
+      assets\
+      logs\
+
+Optional installer (needs Inno Setup installed):
+  After build.bat succeeds, run:
+      ISCC installer\QuirkCode.iss
+  Output:
+      dist\installer\QuirkCodeSetup.exe
+  You can send QuirkCodeSetup.exe instead of (or in addition to) the folder zip.
+
+
+Recipients: open HOW_TO_USE.txt and follow it.
+================================================================================

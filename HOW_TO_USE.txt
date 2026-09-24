@@ -1,0 +1,120 @@
+================================================================================
+  QuirkCode — How to Use
+================================================================================
+
+What this is
+------------
+QuirkCode is a small Windows app that generates safe, temporary activity inside
+an already-open VS Code or Cursor window (keyboard, mouse, scrolling, tab
+switching). Use it to check whether an activity tracker captures that work.
+
+It does NOT:
+  - install or open VS Code / Cursor for you
+  - change your project files permanently
+  - touch tracker logs or settings
+  - require Python on the machine that only runs QuirkCode.exe
+
+
+================================================================================
+  What you need before starting
+================================================================================
+
+1. A Windows 10 or Windows 11 PC
+2. VS Code and/or Cursor installed
+3. This QuirkCode folder (from the zip), which should contain:
+
+       QuirkCode.exe
+       config.json
+       HOW_TO_USE.txt
+       assets\          (icon files)
+       logs\            (created/used when you run tests)
+
+
+================================================================================
+  Step-by-step
+================================================================================
+
+1. Open VS Code or Cursor yourself.
+2. Open several source files (tabs) in that editor.
+3. Double-click QuirkCode.exe
+4. In QuirkCode:
+     - Target:
+         Auto   = use Cursor and/or VS Code (switches between them if both open)
+         VS Code / Cursor = stay on that app only
+     - Duration = how long the test runs (e.g. 5, 15, 30 minutes)
+     - Intensity = Low / Medium / High (how busy the activity is)
+     - Leave "Preserve workspace" checked
+5. Click Refresh and confirm it detects your IDE window.
+6. Click Start.
+7. Let QuirkCode drive the IDE. Do not type in QuirkCode during the run.
+8. It stops when the time ends, or click STOP anytime.
+9. After it finishes, check the logs\ folder for a report.
+
+
+================================================================================
+  During the run
+================================================================================
+
+- QuirkCode will focus VS Code / Cursor (never itself as the work target).
+- It switches between open files/tabs inside the IDE.
+- It generates keyboard and mouse activity, scrolling, search, and temporary
+  text that is undone (so your code should stay unchanged).
+- If you click away to another app, activity pauses until the IDE is focused
+  again (or QuirkCode brings the IDE back).
+
+Emergency stop:  Ctrl + Shift + F12
+Or click STOP in the QuirkCode window.
+Failsafe: move the mouse to a screen corner to abort automated input.
+
+
+================================================================================
+  After the run
+================================================================================
+
+Look in the logs\ folder next to QuirkCode.exe:
+
+  run_YYYYMMDD_HHMMSS.jsonl      — every generated action
+  run_YYYYMMDD_HHMMSS_report.json — summary counts
+
+In your project folder you can run "git status" / "git diff" to confirm
+QuirkCode did not leave permanent file changes.
+
+
+================================================================================
+  Sharing this app with someone else
+================================================================================
+
+Zip the whole QuirkCode folder (the one that contains QuirkCode.exe) and send
+that zip. The other person only needs Windows + VS Code/Cursor. They do not
+need Python.
+
+
+================================================================================
+  If something goes wrong
+================================================================================
+
+"No VS Code or Cursor window found"
+  -> Open the IDE first, open some files, click Refresh, then Start.
+
+Activity goes into the wrong window
+  -> Use Target = Cursor or VS Code instead of Auto.
+  -> Make sure QuirkCode is not the window you want to "test".
+
+Keys feel stuck after STOP
+  -> Press Ctrl, Shift, Alt once each, or restart the IDE.
+  -> Next time use STOP or Ctrl+Shift+F12 and wait a second.
+
+Windows SmartScreen warning on QuirkCode.exe
+  -> Common for unsigned apps. Choose "More info" -> "Run anyway"
+     if you trust the person who sent you this zip.
+
+
+================================================================================
+  Support notes
+================================================================================
+
+App name: QuirkCode
+Platform: Windows 10 / 11 only
+Config:   edit config.json next to the exe if needed (or use the UI)
+
+================================================================================

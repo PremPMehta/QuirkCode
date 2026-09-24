@@ -1,0 +1,29 @@
+================================================================================
+  BUILD FROM A MAC (no Windows PC needed)
+================================================================================
+
+You cannot create QuirkCode.exe on a Mac directly.
+Use free GitHub Actions (a Windows cloud PC) instead.
+
+ONE-TIME SETUP
+--------------
+1. Create a free account at https://github.com (if you don't have one)
+2. On GitHub: New repository → name it e.g. "QuirkCode" → Create
+   (Public is fine and free for Actions)
+3. On your Mac, in Terminal, run the commands from MAKE_EXE_FROM_MAC.txt
+   OR ask Cursor to push this project to that GitHub repo.
+
+AFTER EACH PUSH (or manual Run workflow)
+----------------------------------------
+1. Open your repo on GitHub
+2. Click the "Actions" tab
+3. Click the latest "Build QuirkCode Windows" run
+4. Wait until it shows a green check (usually 2–5 minutes)
+5. Scroll to Artifacts
+6. Download "QuirkCode_Share"
+7. Unzip it — inside is QuirkCode_Share.zip (or the folder)
+8. Send THAT zip to the person who will use it on Windows
+
+They only need Windows + VS Code/Cursor. No Python.
+
+================================================================================

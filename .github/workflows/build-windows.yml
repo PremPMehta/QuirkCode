@@ -1,0 +1,48 @@
+name: Build QuirkCode Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build exe
+        run: pyinstaller --noconfirm build_windows.spec
+
+      - name: Pack share folder
+        shell: pwsh
+        run: |
+          $out = "QuirkCode_Share"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          New-Item -ItemType Directory -Force -Path "$out/logs" | Out-Null
+          New-Item -ItemType Directory -Force -Path "$out/assets" | Out-Null
+          Copy-Item "dist/QuirkCode.exe" "$out/QuirkCode.exe"
+          Copy-Item "config.json" "$out/config.json"
+          Copy-Item "HOW_TO_USE.txt" "$out/HOW_TO_USE.txt"
+          if (Test-Path "assets/quirkcode.ico") { Copy-Item "assets/quirkcode.ico" "$out/assets/" }
+          if (Test-Path "assets/quirkcode.png") { Copy-Item "assets/quirkcode.png" "$out/assets/" }
+          if (Test-Path "assets/quirkcode_256.png") { Copy-Item "assets/quirkcode_256.png" "$out/assets/" }
+          Compress-Archive -Path "$out/*" -DestinationPath "QuirkCode_Share.zip" -Force
+
+      - name: Upload zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: QuirkCode_Share
+          path: QuirkCode_Share.zip
+          if-no-files-found: error

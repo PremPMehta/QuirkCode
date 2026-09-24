@@ -1,0 +1,12 @@
+{
+  "duration_minutes": 30,
+  "intensity": "medium",
+  "target": "auto",
+  "enable_mouse": true,
+  "enable_keyboard": true,
+  "enable_scrolling": true,
+  "enable_tab_switching": true,
+  "enable_terminal": false,
+  "preserve_workspace": true,
+  "random_seed": null
+}
