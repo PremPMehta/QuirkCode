@@ -2,28 +2,43 @@
   BUILD FROM A MAC (no Windows PC needed)
 ================================================================================
 
-You cannot create QuirkCode.exe on a Mac directly.
-Use free GitHub Actions (a Windows cloud PC) instead.
+You cannot create QuirkCode.exe on a Mac itself.
+Use free GitHub Actions (a Windows cloud machine builds it for you).
 
-ONE-TIME SETUP
---------------
-1. Create a free account at https://github.com (if you don't have one)
-2. On GitHub: New repository → name it e.g. "QuirkCode" → Create
-   (Public is fine and free for Actions)
-3. On your Mac, in Terminal, run the commands from MAKE_EXE_FROM_MAC.txt
-   OR ask Cursor to push this project to that GitHub repo.
+STEPS
+-----
+1. Create a free GitHub account: https://github.com/signup
 
-AFTER EACH PUSH (or manual Run workflow)
-----------------------------------------
-1. Open your repo on GitHub
-2. Click the "Actions" tab
-3. Click the latest "Build QuirkCode Windows" run
-4. Wait until it shows a green check (usually 2–5 minutes)
-5. Scroll to Artifacts
-6. Download "QuirkCode_Share"
-7. Unzip it — inside is QuirkCode_Share.zip (or the folder)
-8. Send THAT zip to the person who will use it on Windows
+2. Create a new repo: https://github.com/new
+   - Name: QuirkCode (or anything)
+   - Public
+   - Do NOT add README
+   - Click Create repository
 
-They only need Windows + VS Code/Cursor. No Python.
+3. GitHub will show commands. On your Mac open Terminal and run
+   (replace YOUR_USER with your GitHub username):
+
+     cd /Users/premmehtaprem/AutoEvent
+     git remote add origin https://github.com/YOUR_USER/QuirkCode.git
+     git push -u origin main
+
+   Sign in when asked.
+
+4. Open the repo in the browser → click "Actions"
+
+5. Click "Build QuirkCode Windows" → "Run workflow" → Run
+   (or wait; it also runs automatically after the push)
+
+6. When the green check appears, open that run
+
+7. Under Artifacts, download "QuirkCode_Share"
+
+8. Unzip the download. Inside you get QuirkCode_Share.zip
+   (or the share folder). Send THAT to the Windows user.
+
+They only need Windows + VS Code/Cursor. No Python on their PC.
+
+Full local guide file: MAKE_EXE_FROM_MAC.txt (this file)
+User guide inside the zip: HOW_TO_USE.txt
 
 ================================================================================
